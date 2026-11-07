@@ -49,4 +49,4 @@
 - 拉帖走第三方 FxTwitter 公开接口，请控制频率（脚本已限制每次请求间隔 ≥0.5 秒）。
 - 许可：MIT。
 
-作者在 X：https://x.com/mason0x_
+作者在 X：[@mason0x\_](https://x.com/mason0x_)
