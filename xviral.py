@@ -440,9 +440,10 @@ def score(paths):
     label = lambda c: NAMES.get(COLS[c].split("=")[0], COLS[c].split("=")[0]) + (
         "=" + ZH.get(COLS[c].split("=")[1], COLS[c].split("=")[1]) if "=" in COLS[c] else "")
     contrib = sorted(((m["w"][c] * z[c], c) for c in range(len(COLS))), reverse=True)
-    print(f"\n最高版 {p} 的贡献（权重 × 标准化答案）")
-    print("  加分：" + "；".join(f"{label(c)} {v:+.3f}" for v, c in contrib[:5]))
-    print("  扣分：" + "；".join(f"{label(c)} {v:+.3f}" for v, c in contrib[::-1][:5]))
+    tag = lambda c: label(c) + ("偏多" if z[c] > 0 else "偏少")  # 跟语料平均比
+    print(f"\n最高版 {p} 的贡献（权重 × 标准化答案；偏多 / 偏少是跟语料平均比）")
+    print("  加分：" + "；".join(f"{tag(c)} {v:+.3f}" for v, c in contrib[:5]))
+    print("  扣分：" + "；".join(f"{tag(c)} {v:+.3f}" for v, c in contrib[::-1][:5]))
 
 
 # ---------- 发后查看 ----------
